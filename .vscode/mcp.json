@@ -1,5 +1,11 @@
-
 {
+  "inputs": [
+    {
+      "id": "ado_org",
+      "type": "promptString",
+      "description": "Azure DevOps organization name  (e.g. 'contoso')"
+    }
+  ],
   "servers": {
     "context7": {
       "type": "http",
@@ -9,7 +15,7 @@
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/"
     },
-     "microsoft.docs.mcp": {
+    "microsoft.docs.mcp": {
       "type": "http",
       "url": "https://learn.microsoft.com/api/mcp"
     },
@@ -22,6 +28,15 @@
     "deepwiki": {
       "type": "http",
       "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "ado": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@azure-devops/mcp@next",
+        "${input:ado_org}"
+      ]
     }
   }
 }
